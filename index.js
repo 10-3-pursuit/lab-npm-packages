@@ -73,9 +73,7 @@ function removeInactiveMembers(collection) {
  * @return {number} An array of objects that have a unique title and a price
  */
 function getUniqueClasses(collection) {
-  return _.uniqBy(collection,"title").map(yoga=> {
-    return { "priceInCents":yoga.priceInCents, "title": yoga.title}
-  })
+  return _.uniqBy(collection,"title").map(yoga=> _.pick(yoga, ['title','priceInCents']))
 }
 
 /**
@@ -85,8 +83,8 @@ function getUniqueClasses(collection) {
  * @return {number} An array of objects that are organized by title then by level. The array should only have the title, instructor, and level fields
  */
 function orderClassesByTitleAndLevel(collection) {
-  const omitData = ["durationInMinutes","id","priceInCents","style","description"]
-  return _.orderBy(collection.map(yoga=> _.omit(yoga,omitData)),["title","level"],["asc","desc"])
+  const wantedData = collection.map(yoga=> _.pick(yoga, ["instructor","level","title"]))
+  return _.orderBy(wantedData,["title","level"],["asc","desc"])
 }
 
 module.exports = {
