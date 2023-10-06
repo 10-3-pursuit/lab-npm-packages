@@ -76,7 +76,7 @@ function countClassesByInstructor(collection, instructor) {
   }
 }
 
-console.log(countClassesByInstructor(yogaClasses, 'Yin Yoga'));
+// console.log(countClassesByInstructor(yogaClasses, 'Yin Yoga'));
 
 /**
  * Remove inactive members from the members array
