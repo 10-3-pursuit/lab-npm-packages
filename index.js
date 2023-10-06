@@ -84,14 +84,34 @@ function countClassesByInstructor(collection, instructor) {
  * @param {Object} collection - an array of member objects
  * @return {number} The array of member objects with only active members
  */
-function removeInactiveMembers(collection) {}
+function removeInactiveMembers(collection) {
+  _.remove(collection, (elt) => elt.currentMember === false);
+  return collection;
+}
 
 /**
  * Get a list of unique class titles and their price
  * @param {Object} collection - an array of yoga class objects
  * @return {number} An array of objects that have a unique title and a price
  */
-function getUniqueClasses(collection) {}
+function getUniqueClasses(collection) {
+  const groupByTitle = _.groupBy(collection, (elt) => elt.title);
+  const reducedMappedObject = _.forIn(groupByTitle, (value, key, object) => {
+    object[key] = value[0].priceInCents}
+    );
+
+  const outArr = [];
+  for (let k in reducedMappedObject) {
+    const newObj = {
+      'title': k,
+      'priceInCents': reducedMappedObject[k]
+    }
+    outArr.push(newObj);
+  }
+  return outArr;
+}
+
+// getUniqueClasses(yogaClasses);
 
 /**
  * Get a list of classes organized by title, then by level.
