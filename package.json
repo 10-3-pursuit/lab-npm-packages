@@ -17,10 +17,10 @@
     "url": "https://github.com/pursuit-curriculum/lab-npm-packages/issues"
   },
   "homepage": "https://github.com/pursuit-curriculum/lab-npm-packages#readme",
-  "dependencies": {
-    "lodash": "^4.17.21"
-  },
   "devDependencies": {
     "jest": "^29.5.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }
