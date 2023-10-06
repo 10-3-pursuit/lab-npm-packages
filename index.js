@@ -66,7 +66,7 @@ function omitAgeFromMembers(collection) {
  * @return {number} The sum of the numbers in an array
  */
 function countClassesByInstructor(collection, instructor) {
-  const countByInst = _.countBy(collection, (elt) => elt.instructor == instructor);
+  const countByInst = _.countBy(collection, (elt) => elt.instructor);
   const outCount = countByInst[instructor];
   
   if (!outCount) {
@@ -76,6 +76,7 @@ function countClassesByInstructor(collection, instructor) {
   }
 }
 
+// countClassesByInstructor(yogaClasses, 'Yin Yoga')
 // console.log(countClassesByInstructor(yogaClasses, 'Yin Yoga'));
 
 /**
