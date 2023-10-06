@@ -48,7 +48,7 @@ function groupClassByInstructor(collection) {
  * @return {number} The array of member objects, each one without the age field
  */
 function omitAgeFromMembers(collection) {
-  return collection.map((member) => _.omit(collection, "age"))
+  return _.map(collection, (member) => _.omit(member, "age"))
 }
 
 /**
