@@ -19,7 +19,13 @@ function numberOfKeys(obj) {
  * @param {numbers[]} array - An array of numbers that can also contain some falsy values
  * @return {number} The sum of the numbers in an array
  */
-function sumNumbers(array) {}
+function sumNumbers(array) {
+  // _.compact() removes all falsy values (like null, false, 0, "", undefined, and NaN) from the array
+  const compactedArray = _.compact(array);
+  // _.sum() sums all the numbers in the compacted array
+  const sum = _.sum(compactedArray);
+  return sum;
+}
 
 /**
  * Convert a two-dimensional array of new member data (each inner array having two values: the first being the key, the second being the value) into an object
