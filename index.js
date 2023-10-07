@@ -27,7 +27,7 @@ function sumNumbers(array) {
 
 /**
  * Convert a two-dimensional array of new member data (each inner array having two values: the first being the key, the second being the value) into an object
- * @param {Array[]} member -
+ * @param {Array[]} member - two-dimensional array containing new members
  * @return {number} The sum of the numbers in an array
  */
 function newMemberArrayToObject(member) {
