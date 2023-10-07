@@ -23,14 +23,17 @@ function sumNumbers(array) {
   // _.compact() removes all falsy values (like null, false, 0, "", undefined, and NaN) from the array
   // _.sum() sums all the numbers in the compacted array
   return _.sum(_.compact(array));
-}
+};
 
 /**
  * Convert a two-dimensional array of new member data (each inner array having two values: the first being the key, the second being the value) into an object
  * @param {Array[]} member -
  * @return {number} The sum of the numbers in an array
  */
-function newMemberArrayToObject(member) {}
+function newMemberArrayToObject(member) {
+  // _.fromPairs takes a two-dimensional array and converts it into an object, where each inner array's first element becomes the key and the second element becomes the value.
+  return _.fromPairs(member);
+};
 
 /**
  * Return an array of objects that grouped by instructors from the classes array of objects
