@@ -21,10 +21,8 @@ function numberOfKeys(obj) {
  */
 function sumNumbers(array) {
   // _.compact() removes all falsy values (like null, false, 0, "", undefined, and NaN) from the array
-  const compactedArray = _.compact(array);
   // _.sum() sums all the numbers in the compacted array
-  const sum = _.sum(compactedArray);
-  return sum;
+  return _.sum(_.compact(array));
 }
 
 /**
