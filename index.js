@@ -63,7 +63,7 @@ function countClassesByInstructor(collection, instructor) {
   // use _.size() to get the number of classes with the given instructor
   // _.filter(collection, {instructor}); is implicit way of writing _.filter(collection, function(item) {return item.instructor === instructor;});
  //  {instructor} still gets interpreted as if it were to have both a key and value pair in ES6
-  const count = _.size(_.filter(collection, {instructor}));
+  const count = _.size(_.filter(collection, { instructor }));
   if (count > 0) {
     return count;
   } else return "There is no instructor by that name.";
@@ -78,7 +78,7 @@ function removeInactiveMembers(collection) {
   // currentMember is a key in object located in members.json. Each member has this key aka property
   // if true, member has property currentMember which means member is active
   // _.filter() checks if each element in array meets criteria indicated in 2nd parameter, if it does it gets added to new array. Once _.filter() finishes iterating it'll return the new array with the elements that matched criteria
-  return _.filter(collection, {currentMember: true});
+  return _.filter(collection, { currentMember: true });
 };
 
 /**
@@ -86,7 +86,20 @@ function removeInactiveMembers(collection) {
  * @param {Object} collection - an array of yoga class objects
  * @return {number} An array of objects that have a unique title and a price
  */
-function getUniqueClasses(collection) {}
+function getUniqueClasses(collection) {
+   // _.forEach() iterates through array; parameters are currentValue (mandatory) which is current element being processed in array (which is an object in this case), index (optional), array (optional)
+  const uniqueClasses = {};
+  // for each yogaClass in the collection
+  _.forEach(collection, (yogaClass) => {
+    //extract what we want processed by _.forEach(array, value to be extracted) within object in array
+    const { title, priceInCents } = yogaClass; // Extract the title and priceInCents properties from yogaClass
+    if (!uniqueClasses[title]) { // If the title of the yogaClass doesn't exist as a key in the uniqueClasses object
+        uniqueClasses[title] = { title, priceInCents }; // Add an entry in the uniqueClasses object with the title as the key and the extracted properties as the value
+    }
+  });
+  const result = Object.values(uniqueClasses); // Object.values() is Javascript method to return an array of object values
+  return result;
+};
 
 /**
  * Get a list of classes organized by title, then by level.
@@ -100,7 +113,7 @@ function orderClassesByTitleAndLevel(collection) {
   // - Then by 'level' in descending order 'desc'
   // - Then use .map to get only "title", "instructor", "level"
   const orderedClasses = _.orderBy(collection, ['title','level'], ['asc', 'desc']); // 1st param is array, 2nd is where the keys from array of obj go, 3rd is the order directions
-  return orderedClasses.map(({title, instructor, level}) => ({title, instructor, level})); // it doesn't return number of keys in an obj rather it returns array of obj organized by title and level including instructor field
+  return orderedClasses.map(({ title, instructor, level }) => ({ title, instructor, level })); // it doesn't return number of keys in an obj rather it returns array of obj organized by title and level including instructor field
 };
 
 module.exports = {
