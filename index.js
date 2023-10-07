@@ -50,7 +50,7 @@ function groupClassByInstructor(collection) {
  * @param {Object} collection - an array of member objects
  * @return {number} The array of member objects, each one without the age field
  */
-function omitAgeFromMembers(collection) {}
+function omitAgeFromMembers(collection) {} // ignore for this particular assignment. Test not provided
 
 /**
  * Return the count of the number of classes a particular instructor teaches
@@ -58,14 +58,21 @@ function omitAgeFromMembers(collection) {}
  * @param {String} instructorName - The name of the instructor
  * @return {number} The sum of the numbers in an array
  */
-function countClassesByInstructor(collection, instructor) {}
+function countClassesByInstructor(collection, instructor) {
+
+}
 
 /**
  * Remove inactive members from the members array
  * @param {Object} collection - an array of member objects
  * @return {number} The array of member objects with only active members
  */
-function removeInactiveMembers(collection) {}
+function removeInactiveMembers(collection) {
+  // currentMember is a key in object located in members.json. Each member has this key aka property
+  // if true, member has property currentMember which means member is active
+  // _.filter() checks if each element in array meets criteria indicated in 2nd parameter, if it does it gets added to new array. Once _.filter() finishes iterating it'll return the new array with the elements that matched criteria
+  return _.filter(collection, {currentMember: true});
+};
 
 /**
  * Get a list of unique class titles and their price
