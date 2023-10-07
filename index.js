@@ -121,10 +121,10 @@ function getUniqueClasses(collection) {
  */
 function orderClassesByTitleAndLevel(collection) {
   const sortedArr = _.orderBy(collection, ['title', 'level'], ['asc', 'desc']);
-  return sortedArr;
+  return _.map(sortedArr, (elt) => _.pick(elt, ['title', 'instructor', 'level']));
 }
 
-// orderClassesByTitleAndLevel(yogaClasses);
+// console.log(orderClassesByTitleAndLevel(yogaClasses));
 
 module.exports = {
   numberOfKeys,
