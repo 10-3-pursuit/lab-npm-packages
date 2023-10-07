@@ -59,8 +59,15 @@ function omitAgeFromMembers(collection) {} // ignore for this particular assignm
  * @return {number} The sum of the numbers in an array
  */
 function countClassesByInstructor(collection, instructor) {
-
-}
+  // use _.filter() to get only classes with given instructor
+  // use _.size() to get the number of classes with the given instructor
+  // _.filter(collection, {instructor}); is implicit way of writing _.filter(collection, function(item) {return item.instructor === instructor;});
+  const instructorClasses = _.filter(collection, {instructor}); // {instructor} still gets interpreted as if it were to have both a key and value pair in ES6
+  const count = _.size(instructorClasses);
+  if (count > 0) {
+    return count;
+  } else return "There is no instructor by that name.";
+};
 
 /**
  * Remove inactive members from the members array
@@ -87,7 +94,14 @@ function getUniqueClasses(collection) {}
  * @param {Object} collection - an array of yoga class objects
  * @return {number} An array of objects that are organized by title then by level. The array should only have the title, instructor, and level fields
  */
-function orderClassesByTitleAndLevel(collection) {}
+function orderClassesByTitleAndLevel(collection) {
+  // Use _.orderBy function to sort the collection:
+  // - First by 'title' in ascending order 'asc'
+  // - Then by 'level' in descending order 'desc'
+  // - Then use .map to get only "title", "instructor", "level"
+  const orderedClasses = _.orderBy(collection, ['title','level'], ['asc', 'desc']); // 1st param is array, 2nd is where the keys from array of obj go, 3rd is the order directions
+  return orderedClasses.map(({title, instructor, level}) => ({title, instructor, level})); // it doesn't return number of keys in an obj rather it returns array of obj organized by title and level including instructor field
+};
 
 module.exports = {
   numberOfKeys,
