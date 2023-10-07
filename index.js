@@ -62,8 +62,8 @@ function countClassesByInstructor(collection, instructor) {
   // use _.filter() to get only classes with given instructor
   // use _.size() to get the number of classes with the given instructor
   // _.filter(collection, {instructor}); is implicit way of writing _.filter(collection, function(item) {return item.instructor === instructor;});
-  const instructorClasses = _.filter(collection, {instructor}); // {instructor} still gets interpreted as if it were to have both a key and value pair in ES6
-  const count = _.size(instructorClasses);
+ //  {instructor} still gets interpreted as if it were to have both a key and value pair in ES6
+  const count = _.size(_.filter(collection, {instructor}));
   if (count > 0) {
     return count;
   } else return "There is no instructor by that name.";
